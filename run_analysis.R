@@ -3,8 +3,8 @@ library(dplyr)
 
 # This part is about to read the general variables from the text files. These are the feature names, which will be 
 # used as column names in the final dataset, and the activities with proper naming.
-fnames <- read.table("features.txt", col.names = c("FeatureId","Feature"))
-activities <- read.table("activity_labels.txt", col.names = c("ActivityId", "ActivityName"))
+fnames <- read.table("UCI HAR Dataset/features.txt", col.names = c("FeatureId","Feature"))
+activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("ActivityId", "ActivityName"))
 
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -15,12 +15,12 @@ activities <- read.table("activity_labels.txt", col.names = c("ActivityId", "Act
 # Here comes the reading of the train and test time serieses. I read two files (x and y) in a shot and bind them
 # immidiatelly. I solved the 1 and 4 point is one shot, because I assigmend the variable names direcly from the
 # table read. 
-trainSet <- cbind(read.table("train/x_train.txt", col.names = fnames$Feature),
-                  read.table("train/y_train.txt", col.names = c("ActivityId")),
-                  read.table("train/subject_train.txt", col.names = c("Subject")))
-testSet  <- cbind(read.table("test/x_test.txt", col.names = fnames$Feature),
-                  read.table("test/y_test.txt",   col.names = c("ActivityId")),
-                  read.table("test/subject_test.txt", col.names = c("Subject")))
+trainSet <- cbind(read.table("UCI HAR Dataset/train/x_train.txt", col.names = fnames$Feature),
+                  read.table("UCI HAR Dataset/train/y_train.txt", col.names = c("ActivityId")),
+                  read.table("UCI HAR Dataset/train/subject_train.txt", col.names = c("Subject")))
+testSet  <- cbind(read.table("UCI HAR Dataset/test/x_test.txt", col.names = fnames$Feature),
+                  read.table("UCI HAR Dataset/test/y_test.txt",   col.names = c("ActivityId")),
+                  read.table("UCI HAR Dataset/test/subject_test.txt", col.names = c("Subject")))
 
 # The train and test series arebinded together et this point.
 imported_set <- rbind(trainSet, testSet)
